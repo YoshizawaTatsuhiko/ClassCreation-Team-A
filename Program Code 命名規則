@@ -1,0 +1,12 @@
+# ClassCreation-Team-A
+Program Code の命名規則をここに記載しておきます。
+
+「クラス ＆ メソッド編」
+・クラス名、または、メソッド名の頭文字は大文字。例) Class(), Method()
+・単語の区切りは大文字にする。例) SyatemClass(), SystemMethod();
+
+「変数編」
+・メンバー変数の変数名には、最初に「_ (アンダースコア)」をつける。例) _speed; _power;
+・ローカル変数にはつけない。
+・bool型の変数の変数名は、「is」で書き始める。例) isFrag;
+・単語の区切りは大文字にする。例) moveSpeed;
