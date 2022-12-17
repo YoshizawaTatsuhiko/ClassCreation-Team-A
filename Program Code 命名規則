@@ -10,3 +10,7 @@ Program Code の命名規則をここに記載しておきます。
 ・ローカル変数にはつけない。
 ・bool型の変数の変数名は、「is」で書き始める。例) isFrag;
 ・単語の区切りは大文字にする。例) moveSpeed;
+・変数を宣言するときは、必ずアクセス修飾子をつける。例) private string str;
+・inspectorに表示するものには：[Tooltip("")]、そうでないものには：/// <summary></summary>をつける。
+                　　　　　　　　　　　　　　　　　　例) [SerializeField, Tooltip("ストリング型の変数")] private string str;
+                                                   　　     /// <summary>Rigidbody2D型の変数</summary> private Rigidbody2D rb;
