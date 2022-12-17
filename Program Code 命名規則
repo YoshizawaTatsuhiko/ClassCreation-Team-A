@@ -14,3 +14,6 @@ Program Code の命名規則をここに記載しておきます。
 ・inspectorに表示するものには：[Tooltip("")]、そうでないものには：/// <summary></summary>をつける。
                 　　　　　　　　　　　　　　　　　　例) [SerializeField, Tooltip("ストリング型の変数")] private string str;
                                                    　　     /// <summary>Rigidbody2D型の変数</summary> private Rigidbody2D rb;
+
+「プログラムの書き方編」
+・プログラムを記述するときは、その行で何をやっているのかについて、コメントを記載する。
