@@ -8,7 +8,7 @@ public class ObjectGenerator : MonoBehaviour
     private GameObject[] _go = null;
     [SerializeField, Tooltip("ゲームオブジェクトの最大生成個数")]
     private float _maxQuantity = 1f;
-    /// <summary></summary>
+    /// <summary>何回生成したか数える変数</summary>
     private float _count = 0f;
     [SerializeField, Tooltip("生成間隔")]
     private float _interval = 1f;
@@ -23,16 +23,15 @@ public class ObjectGenerator : MonoBehaviour
     private void FixedUpdate()
     {
         int n = Random.Range(0, _go.Length);
-        if (_count < _maxQuantity)
+        if (_count < _maxQuantity)  // オブジェクトを生成した回数が規定回数未満だったら、生成する。
         {
             _timer += Time.deltaTime;
-            if (_timer >= _interval)
+            if (_timer >= _interval)  // タイマーがインターバル以上になったら、生成する。
             {
                 Instantiate(_go[n], transform);
                 _timer = 0;
                 _count++;
             }
-            Debug.Log(_count);
         }
 
         else if (_count >= _maxQuantity && Count() == 0)
@@ -41,6 +40,8 @@ public class ObjectGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>子オブジェクトがいくつあるか数える</summary>
+    /// <returns>生成した子オブジェクトの個数</returns>
     private int Count()
     {
         int count = 0;
