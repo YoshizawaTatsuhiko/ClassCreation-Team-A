@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 3;
+    [SerializeField] float _jumpPower = 3;
     Rigidbody _rb = default;
+    bool _isGround;
 
     void Start()
     {
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+        var jump = Input.GetButtonDown("Jump");
 
         Vector3 dir = Vector3.forward * v + Vector3.right * h;
         // カメラのローカル座標系を基準に dir を変換する
@@ -29,5 +32,20 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = dir.normalized * _moveSpeed;
         velocity.y = _rb.velocity.y;
         _rb.velocity = velocity;
+
+        if (jump && _isGround == true)
+        {
+            _rb.AddForce(new Vector3(0, _jumpPower * 10, 0));
+            _isGround = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            _isGround = true;
+        }
+        
     }
 }

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 460488078}
   - component: {fileID: 460488083}
   - component: {fileID: 460488082}
+  - component: {fileID: 460488084}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -252,6 +253,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
+  _jumpPower: 20
+--- !u!65 &460488084
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460488077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.28, z: 0.4}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &572734077
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +281,7 @@ GameObject:
   - component: {fileID: 572734078}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
