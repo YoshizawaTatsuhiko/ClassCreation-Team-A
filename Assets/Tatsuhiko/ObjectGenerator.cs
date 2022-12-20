@@ -20,6 +20,9 @@ public class ObjectGenerator : MonoBehaviour
         if (_go == null) Debug.LogWarning("生成するゲームオブジェクトがassignされていません。");
     }
 
+    /// <summary>ゲームクリアを1度だけ呼ぶための変数</summary>
+    private bool _iscall = true;
+
     private void FixedUpdate()
     {
         int n = Random.Range(0, _go.Length);
@@ -34,14 +37,15 @@ public class ObjectGenerator : MonoBehaviour
             }
         }
 
-        else if (_count >= _maxQuantity && Count() == 0)
+        else if (_count >= _maxQuantity && Count() == 0 && _iscall)
         {
+            _iscall = false;
             Debug.Log("生成終了");
         }
     }
 
-    /// <summary>子オブジェクトがいくつあるか数える</summary>
-    /// <returns>生成した子オブジェクトの個数</returns>
+    /// <summary>子オブジェクトの個数</summary>
+    /// <returns>現在の子オブジェクトの個数</returns>
     private int Count()
     {
         int count = 0;
