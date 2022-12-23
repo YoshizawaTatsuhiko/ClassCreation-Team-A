@@ -13,6 +13,7 @@ public class BattleStageController : MonoBehaviour
     {
         _gm = FindObjectOfType<GameManager>();
         _generator = FindObjectOfType<Generator>();
+        Cursor.visible = false;
     }
 
     private bool _isFrag = true;
