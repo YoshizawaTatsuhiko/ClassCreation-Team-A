@@ -16,6 +16,7 @@ public class CollectStageController : MonoBehaviour
         _gm = FindObjectOfType<GameManager>();
         if (_item == null)
         { Debug.LogWarning("Item‚ªassign‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+        Cursor.visible = false;
     }
 
     private bool _isFrag = true;
