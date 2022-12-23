@@ -29,6 +29,8 @@ public class PlayerMoveController : MonoBehaviour
         Vector3 velocity = dir.normalized * _moveSpeed;
         velocity.y = _rb.velocity.y;
         _rb.velocity = velocity;
+
+        Cursor.visible = false;
     }
 
 }
