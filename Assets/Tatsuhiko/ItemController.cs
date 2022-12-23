@@ -24,7 +24,8 @@ public class ItemController : MonoBehaviour
         {
             _audio.Play();
             _collector.Count++;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
