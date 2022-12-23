@@ -23,13 +23,14 @@ public class EnemyController : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Playerの方向に進む。
         Vector3 vec = _player.transform.position - transform.position;
-        vec.y = 0;
+        //vec.y += _rb.velocity.y * Time.deltaTime;
         transform.forward = vec;
-        _rb.velocity = transform.forward * _speed;
+        //_rb.velocity = transform.forward * _speed;
+        _rb.AddForce(transform.forward * _speed);
 
         //Playerに一定距離近づいたら、止まる。
         Vector2 playerPos = new Vector2(_player.transform.position.x, _player.transform.position.z);
