@@ -22,7 +22,7 @@ public class CollectStageController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Count >=_item.Length && _isFrag)
+        if (Count > _item.Length && _isFrag)
         {
             _gm.GameClear();
             _isFrag = false;
