@@ -15,11 +15,14 @@ public class BattleStageController : MonoBehaviour
         _generator = FindObjectOfType<Generator>();
     }
 
+    private bool _isFrag = true;
+
     private void FixedUpdate()
     {
-        if (_generator.transform.childCount <= 0 && _generator.Count >= _generator.MaxQuantity)
+        if (_generator.transform.childCount <= 0 && _generator.Count >= _generator.MaxQuantity && _isFrag)
         {
             _gm.GameClear();
+            _isFrag = false;
             Debug.Log("–â‘è‚È‚µ");
         }
     }
