@@ -18,11 +18,15 @@ public class CollectStageController : MonoBehaviour
         { Debug.LogWarning("Itemがassignされていません。"); }
     }
 
-    private void Update()
+    private bool _isFrag = true;
+
+    private void FixedUpdate()
     {
-        if (Count == _item.Length)
+        if (Count >=_item.Length && _isFrag)
         {
             _gm.GameClear();
+            _isFrag = false;
+            Debug.Log("確認！");
         }
     }
 }

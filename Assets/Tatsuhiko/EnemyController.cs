@@ -23,11 +23,11 @@ public class EnemyController : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Player‚Ì•ûŒü‚Éi‚ŞB
         Vector3 vec = _player.transform.position - transform.position;
-        vec.y = 0;
+        vec.y += _rb.velocity.y * Time.deltaTime;
         transform.forward = vec;
         _rb.velocity = transform.forward * _speed;
 
