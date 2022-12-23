@@ -27,7 +27,7 @@ public class Generator : MonoBehaviour
     private void FixedUpdate()
     {
         int n = Random.Range(0, _go.Length);
-        if (_count < _maxQuantity)  // オブジェクトを生成した回数が規定回数未満だったら、生成する。
+        if (Count < _maxQuantity)  // オブジェクトを生成した回数が規定回数未満だったら、生成する。
         {
             _timer += Time.deltaTime;
             if (_timer >= _interval)  // タイマーがインターバル以上になったら、生成する。
