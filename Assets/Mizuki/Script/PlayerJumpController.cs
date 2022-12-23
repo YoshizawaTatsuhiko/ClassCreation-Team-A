@@ -19,6 +19,7 @@ public class PlayerJumpController : MonoBehaviour
         var jump = Input.GetButtonDown("Jump");
         if (jump && _isGround == true)
         {
+            //Debug.Log("Jump");
             _rb.AddForce(new Vector3(0, _jumpPower * 10, 0));
             _isGround = false;
         }
@@ -28,6 +29,7 @@ public class PlayerJumpController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            Debug.Log("Ground");
             _isGround = true;
         }
     }
