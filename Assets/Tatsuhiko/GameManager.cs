@@ -7,17 +7,17 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField, Tooltip("カウントの仕方を切り替える。\ntrue -> Count Up | false -> Count Down")]
-    private bool _isCount = false;
+    private bool _isCountState = false;
     [SerializeField, Tooltip("制限時間")]
     private int _limitTime = 0;
     /// <summary>時間を計測するタイマー</summary>
     private float _timer = 0;
     [SerializeField, Tooltip("タイムを表示するText")]
     private Text _timeText = null;
-    [SerializeField, Tooltip("")]
+    [SerializeField, Tooltip("ゲームクリアした時に呼ぶイベント")]
     private UnityEvent _onGameClear = null;
-    [SerializeField, Tooltip("")]
-    private UnityEvent _onGameOver = null;
+    //[SerializeField, Tooltip("ゲームオーバーした時に呼ぶイベント")]
+    //private UnityEvent _onGameOver = null;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _timer += Time.deltaTime;
-        if (_isCount)
+        if (_isCountState)
         {
             _timeText.text = _timer.ToString("F2");
         }
@@ -38,15 +38,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>ステージクリアした時に呼ぶ関数/summary>
+    /// <summary>ステージクリアした時に呼ぶ関数</summary>
     public void GameClear()
     {
         _onGameClear.Invoke();
+        Debug.Log("GM「ゲームクリア」");
     }
 
-    /// <summary>ゲームオーバーした時に呼ぶ関数</summary>
-    public void GameOver()
-    {
-        _onGameOver.Invoke();
-    }
+    ///// <summary>ゲームオーバーした時に呼ぶ関数</summary>
+    //public void GameOver()
+    //{
+    //    _onGameOver.Invoke();
+    //    Debug.Log("GM「ゲームオーバー」");
+    //}
 }
