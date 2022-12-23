@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectGenerator : MonoBehaviour
+public class Generator : MonoBehaviour
 {
     [SerializeField, Tooltip("生成するゲームオブジェクト")]
     private GameObject[] _go = null;
     [SerializeField, Tooltip("ゲームオブジェクトの最大生成個数")]
     private float _maxQuantity = 1f;
+    /// <summary>最大生成数のプロパティ</summary>
+    public float MaxQuantity{ get => _maxQuantity; }
     /// <summary>何回生成したか数える変数</summary>
     private float _count = 0f;
+    /// <summary>生成回数のプロパティ</summary>
+    public float Count { get => _count; }
     [SerializeField, Tooltip("生成間隔")]
     private float _interval = 1f;
     /// <summary>時間を計測するタイマー</summary>
@@ -19,9 +23,6 @@ public class ObjectGenerator : MonoBehaviour
     {
         if (_go == null) Debug.LogWarning("生成するゲームオブジェクトがassignされていません。");
     }
-
-    /// <summary>ゲームクリアを1度だけ呼ぶための変数</summary>
-    private bool _iscall = true;
 
     private void FixedUpdate()
     {
@@ -34,26 +35,13 @@ public class ObjectGenerator : MonoBehaviour
                 Instantiate(_go[n], transform);
                 _timer = 0;
                 _count++;
+                Debug.Log(_count);
             }
         }
 
-        else if (_count >= _maxQuantity && Count() == 0 && _iscall)
+        else if (_count >= _maxQuantity && transform.childCount == 0)
         {
-            _iscall = false;
             Debug.Log("生成終了");
         }
-    }
-
-    /// <summary>子オブジェクトの個数</summary>
-    /// <returns>現在の子オブジェクトの個数</returns>
-    private int Count()
-    {
-        int count = 0;
-
-        foreach (Transform child in transform)
-        {
-            count++;
-        }
-        return count;
     }
 }
